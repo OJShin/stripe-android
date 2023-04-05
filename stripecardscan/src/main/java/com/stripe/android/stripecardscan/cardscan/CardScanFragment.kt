@@ -15,7 +15,6 @@ import androidx.core.os.bundleOf
 import androidx.core.view.updateMargins
 import androidx.fragment.app.setFragmentResult
 import com.stripe.android.camera.CameraPreviewImage
-import com.stripe.android.camera.framework.Stats
 import com.stripe.android.camera.scanui.ScanErrorListener
 import com.stripe.android.camera.scanui.SimpleScanStateful
 import com.stripe.android.camera.scanui.ViewFinderBackground
@@ -27,11 +26,6 @@ import com.stripe.android.stripecardscan.cardscan.exception.UnknownScanException
 import com.stripe.android.stripecardscan.cardscan.result.MainLoopAggregator
 import com.stripe.android.stripecardscan.cardscan.result.MainLoopState
 import com.stripe.android.stripecardscan.databinding.FragmentCardscanBinding
-import com.stripe.android.stripecardscan.framework.api.dto.ScanStatistics
-import com.stripe.android.stripecardscan.framework.api.uploadScanStatsOCR
-import com.stripe.android.stripecardscan.framework.util.AppDetails
-import com.stripe.android.stripecardscan.framework.util.Device
-import com.stripe.android.stripecardscan.framework.util.ScanConfig
 import com.stripe.android.stripecardscan.payment.card.ScannedCard
 import com.stripe.android.stripecardscan.scanui.CancellationReason
 import com.stripe.android.stripecardscan.scanui.ScanFragment
@@ -325,15 +319,15 @@ class CardScanFragment : ScanFragment(), SimpleScanStateful<CardScanState> {
     }
 
     override fun closeScanner() {
-        uploadScanStatsOCR(
-            stripePublishableKey = params.stripePublishableKey,
-            instanceId = Stats.instanceId,
-            scanId = Stats.scanId,
-            device = Device.fromContext(context),
-            appDetails = AppDetails.fromContext(context),
-            scanStatistics = ScanStatistics.fromStats(),
-            scanConfig = ScanConfig(0)
-        )
+//        uploadScanStatsOCR(
+//            stripePublishableKey = params.stripePublishableKey,
+//            instanceId = Stats.instanceId,
+//            scanId = Stats.scanId,
+//            device = Device.fromContext(context),
+//            appDetails = AppDetails.fromContext(context),
+//            scanStatistics = ScanStatistics.fromStats(),
+//            scanConfig = ScanConfig(0)
+//        )
         scanFlow.resetFlow()
         super.closeScanner()
     }

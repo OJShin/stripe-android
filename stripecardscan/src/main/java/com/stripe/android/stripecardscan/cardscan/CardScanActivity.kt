@@ -12,7 +12,6 @@ import android.widget.ImageView
 import androidx.activity.addCallback
 import androidx.annotation.RestrictTo
 import com.stripe.android.camera.CameraPreviewImage
-import com.stripe.android.camera.framework.Stats
 import com.stripe.android.camera.scanui.ScanErrorListener
 import com.stripe.android.camera.scanui.ScanState
 import com.stripe.android.camera.scanui.SimpleScanStateful
@@ -26,11 +25,6 @@ import com.stripe.android.stripecardscan.cardscan.exception.UnknownScanException
 import com.stripe.android.stripecardscan.cardscan.result.MainLoopAggregator
 import com.stripe.android.stripecardscan.cardscan.result.MainLoopState
 import com.stripe.android.stripecardscan.databinding.ActivityCardscanBinding
-import com.stripe.android.stripecardscan.framework.api.dto.ScanStatistics
-import com.stripe.android.stripecardscan.framework.api.uploadScanStatsOCR
-import com.stripe.android.stripecardscan.framework.util.AppDetails
-import com.stripe.android.stripecardscan.framework.util.Device
-import com.stripe.android.stripecardscan.framework.util.ScanConfig
 import com.stripe.android.stripecardscan.payment.card.ScannedCard
 import com.stripe.android.stripecardscan.scanui.CancellationReason
 import com.stripe.android.stripecardscan.scanui.ScanActivity
@@ -313,15 +307,15 @@ internal class CardScanActivity : ScanActivity(), SimpleScanStateful<CardScanSta
     }
 
     override fun closeScanner() {
-        uploadScanStatsOCR(
-            stripePublishableKey = params.stripePublishableKey,
-            instanceId = Stats.instanceId,
-            scanId = Stats.scanId,
-            device = Device.fromContext(this),
-            appDetails = AppDetails.fromContext(this),
-            scanStatistics = ScanStatistics.fromStats(),
-            scanConfig = ScanConfig(0)
-        )
+//        uploadScanStatsOCR(
+//            stripePublishableKey = params.stripePublishableKey,
+//            instanceId = Stats.instanceId,
+//            scanId = Stats.scanId,
+//            device = Device.fromContext(this),
+//            appDetails = AppDetails.fromContext(this),
+//            scanStatistics = ScanStatistics.fromStats(),
+//            scanConfig = ScanConfig(0)
+//        )
         super.closeScanner()
     }
 }

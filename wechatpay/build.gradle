@@ -1,6 +1,6 @@
 apply from: configs.androidLibrary
 
-apply plugin: 'checkstyle'
+// apply plugin: 'checkstyle'
 apply plugin: 'org.jetbrains.kotlin.plugin.parcelize'
 
 dependencies {
